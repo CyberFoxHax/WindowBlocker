@@ -1,0 +1,1 @@
+"icobundl.exe" -o out.ico i16.ico i32.ico i64.ico i128.ico i256.ico
