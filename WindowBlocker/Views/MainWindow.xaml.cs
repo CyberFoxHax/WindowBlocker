@@ -70,9 +70,9 @@ namespace WindowBlocker.Views {
 
 		protected override void OnClosed(System.EventArgs e){
 			base.OnClosed(e);
-			_backgroundPoller.Dispose();
 			WindowList.Dispose();
 			Taskbar.NotifyIcon.Dispose();
+			if (_backgroundPoller != null) _backgroundPoller.Dispose();
 		}
 	}
 }
