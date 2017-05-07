@@ -36,12 +36,12 @@ namespace WindowBlocker.Views {
 		}
 
 		private void SaveFile(){
-			var str = Newtonsoft.Json.JsonConvert.SerializeObject(_deathRowWindows);
+			var str = Newtonsoft.Json.JsonConvert.SerializeObject(_deathRowWindows, Newtonsoft.Json.Formatting.Indented);
 			System.IO.File.WriteAllText(FileName, str);
 		}
 
 		private void ReadFile(){
-			var text = System.IO.File.ReadAllText(FileName);
+			var text = System.IO.File.ReadAllText(FileName, System.Text.Encoding.UTF8);
 			List<WindowInfo> res;
 			try{
 				res = Newtonsoft.Json.JsonConvert.DeserializeObject<List<WindowInfo>>(text);
@@ -50,6 +50,9 @@ namespace WindowBlocker.Views {
 				MessageBox.Show("Unable to read blocklist");
 				return;
 			}
+
+			if (res == null || res.Count == 0)
+				return;
 
 			foreach (var windowInfo in res) {
 				_deathRowWindows.Add(windowInfo);

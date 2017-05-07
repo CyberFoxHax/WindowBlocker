@@ -12,7 +12,7 @@ namespace WindowBlocker.Views{
 		private readonly List<WindowInfo> _deathRow;
 		private readonly List<WindowInfo> _closedWindows = new List<WindowInfo>();
 
-		private readonly System.Timers.Timer _timer = new System.Timers.Timer(150){AutoReset = false};
+		private readonly System.Timers.Timer _timer = new System.Timers.Timer(1000){AutoReset = false};
 
 		private void TimerOnElapsed(object sender, System.Timers.ElapsedEventArgs elapsedEventArgs){
 			var activeWindows = Interop.WindowGetter.GetDesktopWindows();
